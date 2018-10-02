@@ -25,11 +25,10 @@ pipeline {
       }
     }
     stage('SonarQube analysis') {
-      steps {
-        def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
-        withSonarQubeEnv('local') {
-          sh "${scannerHome}/bin/sonar-scanner"
-        }
+      // requires SonarQube Scanner 2.8+
+      def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
+      withSonarQubeEnv('My SonarQube Server') {
+        sh "${scannerHome}/bin/sonar-scanner"
       }
     }
   }
