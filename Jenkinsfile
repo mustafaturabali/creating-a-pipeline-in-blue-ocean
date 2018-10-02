@@ -26,7 +26,10 @@ pipeline {
     }
     stage('SonarQube analysis') {
       steps {
-        sh 'sh "/usr/local/Cellar/sonar-scanner/3.2.0.1227/bin/sonar-scanner"'
+        //def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
+        withSonarQubeEnv('local') {
+          sh "/usr/local/Cellar/sonar-scanner/3.2.0.1227/bin/sonar-scanner"
+        }
       }
     }
   }
