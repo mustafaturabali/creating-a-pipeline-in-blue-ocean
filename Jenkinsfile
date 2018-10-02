@@ -27,14 +27,17 @@ pipeline {
     stage('SonarQube analysis') {
       steps {
         // requires SonarQube Scanner 2.8+
-        withSonarQubeEnv('local') {
-          sh "${scannerHome}/bin/sonar-scanner"
+        //withSonarQubeEnv('local') {
+          //sh "${scannerHome}/bin/sonar-scanner"
+        //}
+        script {
+          def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+          sh '${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000'
         }
       }
     }
   }
   environment {
     CI = 'true'
-    scannerHome = tool 'SonarQube Scanner 3.2.0.1227'
   }
 }
