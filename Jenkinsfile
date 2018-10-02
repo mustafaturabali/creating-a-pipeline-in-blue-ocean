@@ -27,7 +27,7 @@ pipeline {
     stage('SonarQube analysis') {
       steps {
         // requires SonarQube Scanner 2.8+
-        withSonarQubeEnv('My SonarQube Server') {
+        withSonarQubeEnv('local') {
           sh "${scannerHome}/bin/sonar-scanner"
         }
       }
