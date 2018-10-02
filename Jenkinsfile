@@ -35,6 +35,6 @@ pipeline {
   }
   environment {
     CI = 'true'
-    def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
+    scannerHome = tool 'SonarQube Scanner 3.2.0.1227'
   }
 }
