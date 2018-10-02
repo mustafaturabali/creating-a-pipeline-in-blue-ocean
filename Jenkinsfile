@@ -26,7 +26,7 @@ pipeline {
     }
     stage('SonarQube analysis') {
       steps {
-        waitForQualityGate true
+        sh 'sh "/usr/local/Cellar/sonar-scanner/3.2.0.1227/bin/sonar-scanner"'
       }
     }
   }
